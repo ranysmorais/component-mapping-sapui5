@@ -1,0 +1,390 @@
+<mvc:View
+	controllerName="template-padronizado.src.pages.definicao-de-padroes.Definicao-de-padroes"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"	
+	height="100%">
+	<Page 
+	    backgroundDesign="Solid"
+		showNavButton="true" 
+		title="{i18n>Commom.Definicao-de-padroes}" 
+		navButtonPress="onNavBack">
+		
+		<content>			
+			<Panel				
+				expandAnimation="true"
+				expandable="true"
+				expanded="true"
+				headerText="Campos/Fields"
+				height="auto"
+				width="100%"
+			>
+
+
+			<!--=================-->
+			<!-- INPUT DEFAULT -->
+			<!--=================-->
+			<content>	
+
+				<Label text="Texto" labelFor="inputTexto" />
+				<Input
+					id="inputTexto"
+					placeholder="Digite um texto"
+					class="sapUiSmallLargeMarginBottom"
+					width="100%"
+				/>
+				<!-- class="sapUiSmallMarginBottom" curto espaço entre um input e outro -->
+				<!-- class="sapUiMediunMarginBottom" longo espaço entre um input e outro -->
+				<!-- class="sapUiLargeMarginBottom" longo espaço entre um input e outro -->
+
+				<Label text="Email" labelFor="inputEmail" />
+				<Input
+					id="inputEmail"
+					type="Email"
+					placeholder="Digite um email"
+					class="sapUiSmallMarginBottom"
+					width="100%" />
+				<!-- class="sapUiSmallMarginBottom" curto espaço entre um input e outro -->
+				<!-- class="sapUiMediunMarginBottom" longo espaço entre um input e outro -->
+				<!-- class="sapUiLargeMarginBottom" longo espaço entre um input e outro -->
+
+				<Label text="Telefone" labelFor="inputTel" />
+				<Input
+					id="inputTel"
+					type="Tel"
+					placeholder="Digite um número de telefone"
+					class="sapUiSmallMarginBottom"
+					width="100%" />
+				<!-- class="sapUiSmallMarginBottom" curto espaço entre um input e outro -->
+				<!-- class="sapUiMediunMarginBottom" longo espaço entre um input e outro -->
+				<!-- class="sapUiLargeMarginBottom" longo espaço entre um input e outro -->
+
+				<Label text="Número" labelFor="inputNumero" />
+				<Input
+					id="inputNumber"
+					type="Number"
+					placeholder="Somente números"
+					class="sapUiSmallMarginBottom"
+					width="100%" />
+				<!-- class="sapUiSmallMarginBottom" curto espaço entre um input e outro -->
+				<!-- class="sapUiMediunMarginBottom" medio espaço entre um input e outro -->
+				<!-- class="sapUiLargeMarginBottom" longo espaço entre um input e outro -->
+
+				<Label text="URL" labelFor="inputUrl" />
+				<Input
+					id="inputUrl"
+					type="Url"
+					placeholder="Digite um URL"
+					class="sapUiSmallMarginBottom" 
+					width="100%"/>
+				<!-- class="sapUiSmallMarginBottom" curto espaço entre um input e outro -->
+				<!-- class="sapUiMediunMarginBottom" longo espaço entre um input e outro -->
+				<!-- class="sapUiLargeMarginBottom" longo espaço entre um input e outro -->
+
+			</content>
+
+			<!--=================-->
+			<!-- INPUT MASKED -->
+			<!--=================-->
+			<form:SimpleForm title="Input masked" editable="true">
+
+				<Label text="Texto Comum"/>
+				<MaskInput mask="~~~~~~~~~~~~~~~~" placeholderSymbol="_" placeholder="Texto comum" >
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+
+				<Label text="Numeros e letras" />
+				<MaskInput  mask="***-****" placeholderSymbol="_" placeholder="Digite a placa do veículo">
+					<rules>
+						<MaskInputRule/>
+					</rules>
+				</MaskInput>
+
+				<Label text="Maiusculas sem caracteres especiais"
+					   tooltip="Latin characters (case sensitive) and numbers"/>
+				<MaskInput mask="CCCCCCCCCCCCCCCCCC" placeholderSymbol="_" placeholder="Somente maiusculas sem caracter especial" showClearIcon="true" >
+					<rules>
+						<MaskInputRule maskFormatSymbol="C" regex="[A-Z0-9]"/>
+					</rules>
+				</MaskInput>
+
+				<Label text="Somente números" tooltip="Numeric only"/>
+				<MaskInput mask="(99) 9 9999-9999" placeholderSymbol="_" placeholder="Digite um Número de" showClearIcon="true" />
+				
+				
+			</form:SimpleForm>
+
+			<!--=================-->
+			<!-- DATA E HORA -->
+			<!--=================-->
+			<form:SimpleForm title="Data e Hora"
+			>				
+				<form:content>
+					<VBox class="sapUiSmallMargin">
+
+						<Label text="Components DatePicker | Modelo de data 1" labelFor="DP1"/>
+						<DatePicker
+							id="DP1"
+							width="20%"
+							value="01/02/2022"
+							placeholder="Informe a Data"
+							class="sapUiSmallMarginBottom"						
+							/>
+
+						<Label text="Modelo de data 2" labelFor="DP3"/>
+						<DatePicker
+							id="DP3"
+							width="20%"
+							value="01/02/2022"
+							displayFormat="short"
+							change="handleChange"
+							class="sapUiSmallMarginBottom"/>
+
+						<Label text="Modelo de Hora 1" labelFor="TP1"/>
+						<TimePicker
+							id="TP1"
+							width="20%"	
+							displayFormat="HH:mm"						
+							value="23:59"
+							placeholder="Enter Time"
+							class="sapUiSmallMarginBottom"
+							
+							/>
+
+							
+
+						<Label text="Modelo de Data &amp; hora" labelFor="DTP1"/>
+						<DateTimePicker
+							id="DTP1"
+							width="20%"
+							displayFormat="dd-MM-yyyy HH:mm"
+							value="01/02/2020 23:59"
+							placeholder="Enter Date &amp; Time"
+							class="sapUiSmallMarginBottom" />							
+							
+					</VBox>					
+				</form:content>				
+			</form:SimpleForm>
+
+			<!--=================-->
+			<!-- COMBOBOX -->
+			<!--=================-->
+			<form:SimpleForm title="ComboBox" >
+				<l:HorizontalLayout width="100%">
+
+					<Label text="Combobox 1 >>"/>
+						<ComboBox id="cmb1" width="90%" >
+							<core:Item key="" text="Arroz"/>
+							<core:Item key="" text="Feijão"/>
+							<core:Item key="" text="Maçã"/>
+							<core:Item key="" text="Pêra"/>
+							<core:Item key="" text="Uva"/>
+							<core:Item key="" text="Refrigerante"
+							/>
+						</ComboBox>
+
+						<Label text="Combobox 2 >>"/>
+						<ComboBox width="90%" showSecondaryValues= "true">
+							<core:ListItem key="" text="Goiânia" additionalText = "GO"/>
+							<core:ListItem key="" text="Manaus" additionalText = "AL"/>
+							<core:ListItem key="" text="São Paulo" additionalText = "SP"/>
+							<core:ListItem key="" text="Rio de Janeiro" additionalText = "RJ"/>
+						</ComboBox>
+
+						<Label text="Combobox 3 >>"/>
+						<ComboBox width="100%" showClearIcon="true">
+							<core:Item key="" text="Opção 1" />
+							<core:Item key="" text="Opção 2" />
+							<core:Item key="" text="Opção 3" />
+							<core:Item key="" text="Opção 4" />
+						</ComboBox>
+										
+			</l:HorizontalLayout>	
+			</form:SimpleForm>
+		
+			<!--=================-->
+			<!-- CHECK BOX -->
+			<!--=================-->
+			<form:SimpleForm title="Check Box" >
+				<VBox >
+				<form:SimpleForm editable="true"
+					layout="ResponsiveLayout"
+					labelSpanL="4"
+					labelSpanM="4">
+					<CheckBox text="opçao a" selected="true" />
+					<CheckBox text="opção b" />
+					<CheckBox text="opção c" />
+					<CheckBox text="opção d" />
+					<CheckBox text="opção e" enabled="false" />					
+				</form:SimpleForm>
+				<form:SimpleForm editable="true"
+					layout="ResponsiveLayout"
+					labelSpanL="4"
+					labelSpanM="4">
+					<CheckBox text="pre-select" selected="true" partiallySelected="true" />
+					<CheckBox text="Atenção" valueState="Warning" />					
+					<CheckBox text="Error" valueState="Error" />
+					<CheckBox text="Informação" valueState="Information" />	
+					<CheckBox text="Sucesso" valueState="Success" selected="true" />			
+				</form:SimpleForm>
+				</VBox>
+			</form:SimpleForm>
+			
+			<!--=================-->
+			<!-- Radio Box-->
+			<!--=================-->
+			<form:SimpleForm title="Radio Box">
+				<VBox class="sapUiSmallMargin">
+					<Label text="Default RadioButton" labelFor="GroupA" />
+					<RadioButtonGroup id="GroupA">
+						<RadioButton text="Option 1" selected="true" />
+						<RadioButton text="Option 2" />
+						<RadioButton text="Option 3" />						
+					</RadioButtonGroup>					
+				</VBox>
+
+				<VBox class="sapUiSmallMargin">
+					<Label text="Informativos" />
+					<HBox class="sapUiTinyMarginTopBottom">
+						<VBox class="sapUiMediumMarginEnd">
+							<Label text="Success" labelFor="groupB" />
+							<RadioButtonGroup id="groupB" valueState="Success">
+								<RadioButton text="Option 1" selected="true" />
+								<RadioButton text="Option 2" />
+							</RadioButtonGroup>
+						</VBox>
+						<VBox class="sapUiMediumMarginEnd">
+							<Label text="Error" labelFor="groupC" />
+							<RadioButtonGroup id="groupC" valueState="Error">
+								<RadioButton text="Option 1" selected="true" />
+								<RadioButton text="Option 2" />
+							</RadioButtonGroup>
+						</VBox>
+						<VBox class="sapUiMediumMarginEnd">
+							<Label text="Warning" labelFor="groupD" />
+							<RadioButtonGroup id="groupD" valueState="Warning">
+								<RadioButton text="Option 1" selected="true" />
+								<RadioButton text="Option 2" />
+							</RadioButtonGroup>
+						</VBox>
+						<VBox class="sapUiMediumMarginEnd">
+							<Label text="Information" labelFor="groupE" />
+							<RadioButtonGroup id="groupE" valueState="Information">
+								<RadioButton text="Option 1" selected="true" />
+								<RadioButton text="Option 2" />
+							</RadioButtonGroup>
+						</VBox>
+					</HBox>
+				</VBox>
+			</form:SimpleForm>
+
+			<!--=================-->
+			<!-- List Check Box-->
+			<!--=================-->
+			<form:SimpleForm title="List Check Box" width="100%">
+				<OverflowToolbar width="100%">
+					<SearchField  liveChange=".onSearch" width="100%" />
+				</OverflowToolbar>
+				<List
+					id="idList"					
+					selectionChange=".onSelectionChange"
+					mode="MultiSelect"
+					growing="true"
+					growingThreshold="50"
+					includeItemInSelection="true"
+					width="100%">
+					<infoToolbar>
+						<OverflowToolbar visible="false" id="idInfoToolbar">
+							<Label id="idFilterLabel" />
+						</OverflowToolbar>
+					</infoToolbar>
+					<StandardListItem
+						title="item 1"
+						description="descrição opcional"
+						icon="sap-icon://newspaper"
+						iconDensityAware="false"
+						iconInset="true" />
+
+						<StandardListItem
+						title="item 2"
+						description="descrição opcional"
+						icon="sap-icon://newspaper"
+						iconDensityAware="false"
+						iconInset="true" />	
+
+						<StandardListItem
+						title="item 3"
+						description="descrição opcional"
+						icon="sap-icon://newspaper"
+						iconDensityAware="false"
+						iconInset="true" />
+
+						<StandardListItem
+						title="item 4"
+						description="descrição opcional"
+						icon="sap-icon://newspaper"
+						iconDensityAware="false"
+						iconInset="true" />
+				</List>
+			</form:SimpleForm>
+			<l:VerticalLayout
+		class="sapUiContentPadding"
+		width="50%">
+		<Label text="Lista multi select"/>
+		<MultiComboBox>
+			<core:Item key="}" text="Item 1" />
+			<core:Item key="}" text="Item 2" />
+			<core:Item key="}" text="Item 3" />
+			<core:Item key="}" text="Item 4" />
+			<core:Item key="}" text="Item 5" />
+			<core:Item key="}" text="Item 6" />
+			<core:Item key="}" text="Item 7" />
+			<core:Item key="}" text="Item 8" />
+			<core:Item key="}" text="Item 9" />
+		</MultiComboBox>
+		</l:VerticalLayout>
+
+		<!--=================-->
+		<!-- Radio Group-->
+		<!--=================-->
+		<form:SimpleForm title="Radio Group">
+			<VBox class="sapUiSmallMargin">
+				<Label labelFor="rbg1" text="Component 'RadioButtonGroup' | 'colums = 3'" />
+				<RadioButtonGroup id="rbg1" columns="3" width="100%" class="sapUiMediumMarginBottom">
+					<RadioButton id="RB1-1" text="Option 1" />
+					<RadioButton id="RB1-2" text="Option 2 (enable = 'false')" enabled="false" />
+					<RadioButton id="RB1-3" text="Option 3 (editable = 'false')" editable="false" />
+					<RadioButton id="RB1-4" text="Option 4" />
+					<RadioButton id="RB1-5" text="Option 5" />
+					<RadioButton id="RB1-6" text="Option 6" />
+				</RadioButtonGroup>
+				<Label labelFor="rbg2" text="Um exemplo com 3 buttons e 2 columns" />
+				<RadioButtonGroup id="rbg2" columns="2" selectedIndex="2" class="sapUiMediumMarginBottom">
+					<RadioButton id="RB2-1" text="Option 1" />
+					<RadioButton id="RB2-2" text="Option 2" editable="false" />
+					<RadioButton id="RB2-3" text="Option 3" />
+				</RadioButtonGroup>
+				<Label labelFor="rbg3" text="If the number of columns is equal to or exceeds the number of radio buttons they align horizontally" />
+				<RadioButtonGroup id="rbg3" columns="5" valueState="Error" class="sapUiMediumMarginBottom">
+					<RadioButton id="RB3-1" text="Option 1" />
+					<RadioButton id="RB3-2" text="Option 2" />
+					<RadioButton id="RB3-3" text="Option 3" />
+				</RadioButtonGroup>
+				<Label labelFor="rbg4" text="An example of a group in warning state" />
+				<RadioButtonGroup id="rbg4" valueState="Warning">
+					<RadioButton id="RB4-1" text="Option 1" />
+					<RadioButton id="RB4-2" text="Option 2" />
+				</RadioButtonGroup>
+			</VBox>
+		</form:SimpleForm>
+
+		</Panel>		
+
+		</content>	
+		
+	</Page>
+</mvc:View>

@@ -1,0 +1,24 @@
+{
+  "navigation": [
+    {
+      "title": "Commom.Home",
+      "icon": "sap-icon://default",
+      "expanded": true,
+      "key": "dashBoard"
+    },
+    {
+      "title": "Commom.Definicao-de-padroes",
+      "icon": "sap-icon://information",
+      "expanded": true,
+      "key": "definicao-de-padroes"
+    }
+  ],
+  "fixedNavigation": [
+    {
+      "title": "Commom.Settings",
+      "icon": "sap-icon://settings",
+      "key": "settings"
+    }
+  ],
+  "headerItems": []
+}
