@@ -2,6 +2,9 @@
 	controllerName="template-padronizado.src.pages.definicao-de-padroes.Definicao-de-padroes"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	xmlns:m="sap.m"
+	xmlns:eg="sap.zen.dsh"
+	xmlns:smartList="sap.ui.comp.smartlist"
 	xmlns:form="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout"
 	xmlns:core="sap.ui.core"	
@@ -13,10 +16,13 @@
 		navButtonPress="onNavBack">
 		
 		<content>			
+			<!--      ================     -->
+			<!--      CAMPOS / FIELDS      -->
+			<!--      ================     -->  
 			<Panel				
 				expandAnimation="true"
 				expandable="true"
-				expanded="true"
+				expanded="false"
 				headerText="Campos/Fields"
 				height="auto"
 				width="100%"
@@ -174,7 +180,7 @@
 			<!-- COMBOBOX -->
 			<!--=================-->
 			<form:SimpleForm title="ComboBox" >
-				<l:HorizontalLayout width="100%">
+				<l:VerticalLayout width="100%">
 
 					<Label text="Combobox 1 >>"/>
 						<ComboBox id="cmb1" width="90%" >
@@ -203,7 +209,7 @@
 							<core:Item key="" text="Opção 4" />
 						</ComboBox>
 										
-			</l:HorizontalLayout>	
+			</l:VerticalLayout>	
 			</form:SimpleForm>
 		
 			<!--=================-->
@@ -362,29 +368,411 @@
 					<RadioButton id="RB1-5" text="Option 5" />
 					<RadioButton id="RB1-6" text="Option 6" />
 				</RadioButtonGroup>
-				<Label labelFor="rbg2" text="Um exemplo com 3 buttons e 2 columns" />
+				<Label labelFor="rbg2" text="Um exemplo com 3 radio buttons e 2 columns" />
 				<RadioButtonGroup id="rbg2" columns="2" selectedIndex="2" class="sapUiMediumMarginBottom">
 					<RadioButton id="RB2-1" text="Option 1" />
-					<RadioButton id="RB2-2" text="Option 2" editable="false" />
+					<RadioButton id="RB2-2" text="Option 2 (editable = 'false')" editable="false" />
 					<RadioButton id="RB2-3" text="Option 3" />
 				</RadioButtonGroup>
-				<Label labelFor="rbg3" text="If the number of columns is equal to or exceeds the number of radio buttons they align horizontally" />
+				<Label labelFor="rbg3" text="Radio Buttons alinhados Verticalmente" />
 				<RadioButtonGroup id="rbg3" columns="5" valueState="Error" class="sapUiMediumMarginBottom">
 					<RadioButton id="RB3-1" text="Option 1" />
 					<RadioButton id="RB3-2" text="Option 2" />
 					<RadioButton id="RB3-3" text="Option 3" />
 				</RadioButtonGroup>
-				<Label labelFor="rbg4" text="An example of a group in warning state" />
+				<Label labelFor="rbg4" text="Radio Button no formato de lista" />
 				<RadioButtonGroup id="rbg4" valueState="Warning">
 					<RadioButton id="RB4-1" text="Option 1" />
 					<RadioButton id="RB4-2" text="Option 2" />
+					<RadioButton id="RB4-3" text="Option 3" />
+					<RadioButton id="RB4-4" text="Option 4" />
 				</RadioButtonGroup>
 			</VBox>
 		</form:SimpleForm>
 
-		</Panel>		
-
-		</content>	
+		<form:SimpleForm title="Sliders">
+			<l:VerticalLayout class="sapUiContentPadding" width="100%">
 		
+					<Text text="Component Slider" class="sapUiSmallMarginBottom"/>
+					<Slider value="5" width="66%"
+							min="0" max="50" enabled="false" class="sapUiMediumMarginBottom" />
+
+					<Text text="Slider with text field" class="sapUiSmallMarginBottom"/>
+					<Slider value="50" width="100%"
+							min="0" max="100"
+							showAdvancedTooltip="true"
+							showHandleTooltip="false"
+							class="sapUiMediumMarginBottom" />
+		
+					<Text text="Component Slider | modelo tickmarks" class="sapUiSmallMarginBottom"/>
+					<Slider enableTickmarks="true" min="0" max="10" class="sapUiMediumMarginBottom" width="100%"/>
+
+					<Slider enableTickmarks="true" class="sapUiMediumMarginBottom" width="100%"/>
+
+					<Slider enableTickmarks="true" min="-100" max="100" step="5" class="sapUiLargeMarginBottom" width="100%"/>
+
+					<Slider min="0" max="30" enableTickmarks="true" class="sapUiSmallMarginBottom" width="100%">
+					<ResponsiveScale tickmarksBetweenLabels="3"/>
+					</Slider>
+			</l:VerticalLayout>
+		</form:SimpleForm>
+
+		</Panel>
+
+			<!--      ================     -->
+			<!--           BOTÕES          -->
+			<!--      ================     -->
+		<Panel				
+				expandAnimation="true"
+				expandable="true"
+				expanded="false"
+				headerText="Botões"
+				height="auto"
+				width="100%"
+		>
+
+		<!--=================-->
+		<!--    Primários    -->
+		<!--=================-->
+		<form:SimpleForm title="Primários">
+			
+			
+			<form:content>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Title text="Component Button" level="H1"/>
+					<ToolbarSpacer/>					
+				</Toolbar>	
+			</form:content>	
+			
+		</form:SimpleForm>
+
+		<form:SimpleForm>
+			
+			<HBox>
+				<Button text="ok (type= 'Default')"
+						press="onPress"
+						ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+				<Button type="Accept"
+						text="ok (type = 'Accept')"
+						press="onPress"
+						ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+				<Button type="Reject"
+						text="ok (type = 'Reject')"
+						press="onPress"
+						ariaDescribedBy="rejectButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+				<Button text="ok (enable = 'false')"
+						press="onPress"
+						ariaDescribedBy="comingSoonButtonDescription genericButtonDescription"
+						enabled="false">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+
+				<Button text="button com icone" 
+						icon="sap-icon://edit"
+						type="Transparent" press="onPress" 
+						ariaLabelledBy="editButtonLabel">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>	
+				</Button>
+			</HBox>
+		</form:SimpleForm>
+
+		<form:SimpleForm>
+			
+			<HBox>
+				<Button text="ok (type = 'Ghost')"
+						type="Ghost"
+						press="onPress"
+						ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+				<Button type="Emphasized"
+						text="ok (type = 'Emphasized')"
+						press="onPress"
+						ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+				<Button type="Transparent"
+						text="ok (type = 'Transparent')"
+						press="onPress"
+						ariaDescribedBy="rejectButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+				<Button	type="Unstyled"
+						text="ok (enable = 'Unstyled')"
+						press="onPress"
+						ariaDescribedBy="comingSoonButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+
+				<Button	type=""
+						text="ok (enable = 'Up')"
+						press="onPress"
+						ariaDescribedBy="comingSoonButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+
+			</HBox>
+		</form:SimpleForm>
+		
+		<form:SimpleForm>			
+			<Toolbar >
+			<MessageStrip
+				class="sapUiTinyMargin"
+				text="Botões para borda"
+				type="Information"
+				showIcon="true">
+			</MessageStrip>	
+
+
+			<OverflowToolbar id="otb1">				
+
+				<Button text="New" type="Transparent">
+				</Button>
+				<Button text="Open" type="Transparent"/>
+				<Button text="Save" type="Transparent"/>
+				<Button text="Save as" type="Transparent"/>
+				<Button text="Cut" type="Transparent"/>
+				<Button text="Copy" type="Transparent"/>
+				<Button text="Paste" type="Transparent"/>
+				<Button text="Undo" type="Transparent"/>
+				<Button text="Redo" type="Transparent"/>
+			</OverflowToolbar>
+			</Toolbar>
+		</form:SimpleForm>
+
+		<!--=================-->
+		<!--   Secundário    -->
+		<!--=================-->
+
+		<form:SimpleForm title="Secundários">
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Label text = "Component MenuButton"/>
+				<MenuButton text="File">
+					<menu>
+						<Menu>
+							<MenuItem text="Edit" icon="sap-icon://edit" press="onPress">
+								<customData>
+									<core:CustomData
+										key="target"
+										value="p1" />
+								</customData>
+							</MenuItem>
+							<MenuItem text="Save" icon="sap-icon://save" press="onPress" />
+							<MenuItem text="Open" icon="sap-icon://open-folder" press="onPress" />
+						</Menu>
+					</menu>
+				</MenuButton>
+				<MenuButton text="Calculator" buttonMode="Split" useDefaultActionOnly="true">
+					<menu>
+						<Menu itemSelected="onMenuAction">
+							<MenuItem text="basic" icon="sap-icon://chalkboard">
+								<items>
+									<MenuItem text="add" icon="sap-icon://add" />
+									<MenuItem text="subtract" icon="sap-icon://less" />
+									<MenuItem text="multiply" icon="sap-icon://decline" />
+								</items>
+							</MenuItem>
+							<MenuItem text="complex" icon="sap-icon://display">
+								<items>
+									<MenuItem text="square" icon="sap-icon://status-completed" />
+								</items>
+							</MenuItem>
+						</Menu>
+					</menu>
+				</MenuButton>
+				<ToolbarSpacer/>
+			</Toolbar>
+		
+			<VBox class="sapUiSmallMargin">
+				<Label text = "Menu 1"/>
+				<MenuButton text="Calculator" buttonMode="Split" useDefaultActionOnly="true">
+					<menu>
+						<Menu itemSelected="onMenuAction">
+							<MenuItem text="basic" icon="sap-icon://chalkboard">
+								<items>
+									<MenuItem text="add" icon="sap-icon://add" />
+									<MenuItem text="subtract" icon="sap-icon://less" />
+									<MenuItem text="multiply" icon="sap-icon://decline" />
+								</items>
+							</MenuItem>
+							<MenuItem text="complex" icon="sap-icon://display">
+								<items>
+									<MenuItem text="square" icon="sap-icon://status-completed" />
+								</items>
+							</MenuItem>
+						</Menu>
+					</menu>
+				</MenuButton>
+		
+				<Label text = "Menu 2"/>
+				<MenuButton text="File">
+					<menu>
+						<Menu itemSelected="onMenuAction">
+							<MenuItem text="Edit" icon="sap-icon://edit" />
+							<MenuItem text="Save" icon="sap-icon://save" />
+							<MenuItem text="Open" icon="sap-icon://open-folder" />
+						</Menu>
+					</menu>
+				</MenuButton>
+		
+				<Label text = "Menu 3"/>
+				<MenuButton text="File Menu" buttonMode="Split" defaultAction="onDefaultAction" beforeMenuOpen="onBeforeMenuOpen">
+					<menu>
+						<Menu itemSelected="onMenuAction">
+							<MenuItem text="Edit" icon="sap-icon://edit" />
+							<MenuItem text="Save" icon="sap-icon://save" />
+							<MenuItem text="Open" icon="sap-icon://open-folder" />
+						</Menu>
+					</menu>
+				</MenuButton>
+				
+					
+				<Label text = "Menu 4"/>
+				<MenuButton text="Accept" buttonMode="Split" type="Accept" defaultAction="onDefaultActionAccept" beforeMenuOpen="onBeforeMenuOpen" useDefaultActionOnly="true">
+					<menu>
+						<Menu itemSelected="onMenuAction">
+							<MenuItem text="Send the response now" icon="sap-icon://response" />
+							<MenuItem text="Edit the response before sending" icon="sap-icon://edit-outside" />
+							<MenuItem text="Do not send a response" icon="sap-icon://action" />
+						</Menu>
+					</menu>
+				</MenuButton>							
+			</VBox>
+		</form:SimpleForm>
+		</Panel>
+
+			<!--      ================     -->
+			<!--          Paineis          -->
+			<!--      ================     -->
+		<Panel
+			accessibleRole="Form"
+			backgroundDesign="Translucent"
+			expandAnimation="true"
+			expandable="true"
+			expanded="false"
+			headerText="Paineis"
+			height="auto"
+			width="100%"
+		>
+		<form:SimpleForm>
+		<m:VBox
+      		id="v1"
+     		class="sapUiSmallMargin"
+     		height="100%"
+    		width="100%">
+			
+			<Panel
+				accessibleRole="Form"
+				backgroundDesign="Translucent"
+				expandAnimation="false"
+				expandable="false"
+				expanded="false"
+				headerText="Painel estático"
+				height="auto"
+				width="100%"
+			>
+				<content>
+					<Text
+						maxLines=""
+						renderWhitespace="false"
+						text="Component Panel | (expandAnimation='false',
+						expandable='false',
+						expanded='false')"
+
+						textAlign="Center"
+						textDirection="RTL"
+						width=""
+						wrapping="true"
+						wrappingType="Hyphenated"
+					>
+						
+					</Text>
+					
+				</content>				
+			</Panel>
+  		</m:VBox>	
+
+		<m:HBox
+      		id="v2"
+     		class="sapUiSmallMargin"
+     		height="100%"
+    		width="100%">
+			
+			<Panel
+				accessibleRole="Form"
+				backgroundDesign="Translucent"
+				expandAnimation="true"
+				expandable="true"
+				expanded="false"
+				headerText="Painel expansivo (clique aqui para expandir)"
+				height="auto"
+				width="100%"
+			>
+				<content>
+					<Text
+						maxLines=""
+						renderWhitespace="false"
+						text="Component Panel | (expandAnimation='true',
+						expandable='true',
+						expanded='false')"
+
+						textAlign="Center"
+						textDirection="RTL"
+						width=""
+						wrapping="true"
+						wrappingType="Hyphenated"
+					>
+						
+					</Text>
+					
+				</content>				
+			</Panel>
+  		</m:HBox>  					
+   		</form:SimpleForm>
+
+		<form:SimpleForm title="Form Default">
+		   	<Text
+				  
+				   renderWhitespace="false"
+				   text="Componente f:SimpleForm"
+				   textAlign="Begin"
+				   textDirection="Inherit"
+				   width=""
+				   wrapping="true"
+				   wrappingType="Normal"
+			   >				   
+			   </Text>
+		</form:SimpleForm>
+    
+		</Panel>	
+	</content>		
 	</Page>
 </mvc:View>
